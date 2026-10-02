@@ -33,13 +33,13 @@ See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rule
 
 ## URL de l’API
 
-Dans GitHub Codespaces, `VITE_CODESPACE_NAME` doit être défini pour que le frontend contacte l’API distante. Ajoutez-le au fichier `octofit-tracker/frontend/.env.local` :
+Dans GitHub Codespaces, définissez `VITE_CODESPACE_NAME` pour que le frontend contacte l’API distante de façon explicite. Ajoutez-le au fichier `octofit-tracker/frontend/.env.local` :
 
 ```dotenv
 VITE_CODESPACE_NAME=le-nom-de-votre-codespace
 ```
 
-Redémarrez Vite après avoir modifié ce fichier. En local, cette variable peut rester absente : l’application utilise alors `http://localhost:8000`.
+Redémarrez Vite après avoir modifié ce fichier. Si la variable est absente, l’application détecte aussi un hostname Codespaces standard en `-5173.app.github.dev`. Hors Codespaces, elle utilise `http://localhost:8000`.
 
 ## Développement
 
