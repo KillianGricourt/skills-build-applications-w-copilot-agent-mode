@@ -1,4 +1,7 @@
+import { fetchCollection as fetch } from '../api.js'
 import ResourcePage from './ResourcePage.jsx'
+
+const loadLeaderboard = (signal) => fetch('/api/leaderboard/', signal)
 
 const columns = [
   { key: 'user', label: 'Utilisateur' },
@@ -8,5 +11,5 @@ const columns = [
 ]
 
 export default function Leaderboard() {
-  return <ResourcePage title="Classement" endpoint="/api/leaderboard/" columns={columns} />
+  return <ResourcePage title="Classement" load={loadLeaderboard} columns={columns} />
 }

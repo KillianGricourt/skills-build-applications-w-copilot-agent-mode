@@ -1,4 +1,7 @@
+import { fetchCollection as fetch } from '../api.js'
 import ResourcePage from './ResourcePage.jsx'
+
+const loadActivities = (signal) => fetch('/api/activities/', signal)
 
 const columns = [
   { key: 'type', label: 'Activité' },
@@ -10,5 +13,5 @@ const columns = [
 ]
 
 export default function Activities() {
-  return <ResourcePage title="Activités" endpoint="/api/activities/" columns={columns} />
+  return <ResourcePage title="Activités" load={loadActivities} columns={columns} />
 }

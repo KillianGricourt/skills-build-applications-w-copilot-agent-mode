@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { fetchCollection } from '../api.js'
 
 function formatValue(value) {
   if (value === null || value === undefined || value === '') return '—'
@@ -12,7 +11,7 @@ function formatValue(value) {
   return String(value)
 }
 
-export default function ResourcePage({ title, endpoint, columns }) {
+export default function ResourcePage({ title, load, columns }) {
   const [items, setItems] = useState([])
   const [status, setStatus] = useState('loading')
   const [error, setError] = useState('')
@@ -20,7 +19,7 @@ export default function ResourcePage({ title, endpoint, columns }) {
   useEffect(() => {
     const controller = new AbortController()
 
-    fetchCollection(endpoint, controller.signal)
+    load(controller.signal)
       .then((results) => {
         setItems(results)
         setStatus('ready')
@@ -32,7 +31,7 @@ export default function ResourcePage({ title, endpoint, columns }) {
       })
 
     return () => controller.abort()
-  }, [endpoint])
+  }, [load])
 
   return (
     <section className="section-view" aria-labelledby="resource-title">
