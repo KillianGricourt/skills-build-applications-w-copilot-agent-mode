@@ -30,3 +30,21 @@ If you are developing a production application, we recommend enabling type-aware
 ```
 
 See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+
+## URL de l’API
+
+Dans GitHub Codespaces, `VITE_CODESPACE_NAME` doit être défini pour que le frontend contacte l’API distante. Ajoutez-le au fichier `octofit-tracker/frontend/.env.local` :
+
+```dotenv
+VITE_CODESPACE_NAME=le-nom-de-votre-codespace
+```
+
+Redémarrez Vite après avoir modifié ce fichier. En local, cette variable peut rester absente : l’application utilise alors `http://localhost:8000`.
+
+## Développement
+
+```bash
+npm run dev --prefix octofit-tracker/frontend
+```
+
+L’API doit être disponible sur le port 8000.
